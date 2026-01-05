@@ -77,11 +77,11 @@ bot.on('text', async (ctx) => {
 
       console.log(`Attempting to create ministore for: ${itemName} (User ID: ${userId})`);
       try {
-        const apiResponse = await createMinistore(itemName, userId);
+        const apiResponse = await createMinistore(itemName, 221);
         if (apiResponse.success && apiResponse.book_url) {
           displayResponseToUser += `\n\n${apiResponse.book_url}`;
         } else {
-          displayResponseToUser += "\nOops! Couldn't create the ministore right now. Please try again later. 💔";
+          displayResponseToUser += "\n\nOops! Couldn't create the ministore right now. Please try again later. 💔";
           console.error(`Failed to create ministore: ${apiResponse.message}`);
         }
       } catch (api_e) {

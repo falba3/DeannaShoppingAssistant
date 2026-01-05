@@ -4,7 +4,7 @@ import axios from 'axios';
 const DEANNA_API_URL = process.env.DEANNA_API_URL;
 const DEANNA_API_KEY = process.env.DEANNA_API_KEY;
 
-export async function createMinistore(term: string, userId: number = 221): Promise<{ success: boolean; book_url?: string; message?: string }> {
+export async function createMinistore(term: string, userId: number): Promise<{ success: boolean; book_url?: string; message?: string }> {
   if (!DEANNA_API_URL || !DEANNA_API_KEY) {
     console.error('DEANNA_API_URL or DEANNA_API_KEY is not set in environment variables.');
     return { success: false, message: 'API configuration missing.' };
@@ -17,7 +17,7 @@ export async function createMinistore(term: string, userId: number = 221): Promi
 
   const payload = {
     term: term,
-    user_id: userId,
+    user_id: 221, // Hardcoding user_id to 221 as per API expectation
   };
 
   try {
